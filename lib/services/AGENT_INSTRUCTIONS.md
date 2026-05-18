@@ -261,7 +261,31 @@ If you see yourself doing ANY of these → STOP and ask for review:
 
 ---
 
-## 📞 When to Ask for Help
+## 🔒 Enforcement Layer (MANDATORY)
+
+RecipeParser is now protected by automated enforcement:
+
+### CI Pipeline (GitHub Actions)
+- **Trigger:** Any push/PR to parser files
+- **Blocking:** Golden tests MUST pass (12/12)
+- **Enforcement:** Merge blocked if any test fails
+- **Workflow:** `.github/workflows/parser-ci.yml`
+
+### Pre-Commit Hook
+- **Trigger:** Before commit to parser files
+- **Check:** Commit message must have `[PARSER-FIX]` tag
+- **Enforcement:** Commit rejected if tag missing
+- **Location:** `.git/hooks/prepare-commit-msg`
+
+### Contract Validation
+- **Check:** PARSER_CONTRACT.md must exist
+- **Check:** AGENT_INSTRUCTIONS.md must exist
+- **Check:** golden_behavior_test.dart must exist
+- **Enforcement:** CI fails if any missing
+
+**IMPORTANT:** No parser changes are valid unless CI passes all golden tests.
+
+---
 
 Ask for architectural review if:
 - [ ] You want to add new pipeline stage
