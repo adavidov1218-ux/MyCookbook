@@ -1,0 +1,19 @@
+{
+  "id": "test_minimal_01",
+  "schema_version": "1.0",
+  "tags": {
+    "structural": ["paragraph_style"],
+    "semantic": ["narrative_recipe"],
+    "quality": ["high_noise"]
+  },
+  "input": {
+    "source_type": "youtube",
+    "raw_text": "мука 500 г\n1. Смешать все ингредиенты"
+  },
+  "expectations": {
+    "ingredients": [{"name": "мука", "qty": "500", "unit": "г"}],
+    "steps": ["Смешать все ингредиенты"],
+    "forbidden_patterns": ["telegram"]
+  },
+  "tolerances": {"fuzzy_threshold": 0.85}
+}
