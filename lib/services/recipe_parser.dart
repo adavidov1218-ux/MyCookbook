@@ -1,6 +1,7 @@
 import 'package:mycookbook_gemini/domain/models/parsed_recipe.dart';
 import 'package:mycookbook_gemini/services/normalizer.dart';
 
+// CI trigger test - workflow activation
 class RecipeParser {
   static final _stepMarkerRegex = RegExp(r'^(\d+[.)]|шаг\s*\d+|👉|➡|1\.)\s*', caseSensitive: false);
   static final _headerRegex = RegExp(
