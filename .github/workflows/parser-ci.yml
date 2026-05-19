@@ -2,20 +2,9 @@ name: RecipeParser CI - Enforce Golden Tests
 
 on:
   push:
-    branches: [ main, develop, ci-trigger-test ]  # TEMP: ci-trigger-test for workflow debug
-    paths:
-      - 'lib/services/recipe_parser.dart'
-      - 'lib/services/normalizer.dart'
-      - 'lib/services/comparer.dart'
-      - 'test/parser/**'
-      - '.github/workflows/parser-ci.yml'
+    branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
-    paths:
-      - 'lib/services/recipe_parser.dart'
-      - 'lib/services/normalizer.dart'
-      - 'lib/services/comparer.dart'
-      - 'test/parser/**'
 
 jobs:
   parser-golden-tests:
@@ -33,18 +22,6 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
-
-      - name: Run golden behavior tests (MUST PASS)
-        run: flutter test test/parser/golden_behavior_test.dart -v
-        continue-on-error: false
-
-      - name: Run parser unit tests
-        run: flutter test test/parser/recipe_parser_test.dart -v
-        continue-on-error: false
-
-      - name: Run regression tests
-        run: flutter test test/parser/recipe_parser_regression_test.dart -v
-        continue-on-error: false
 
       - name: Run all parser tests
         run: flutter test test/parser/ -v
