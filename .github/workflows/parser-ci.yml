@@ -2,7 +2,7 @@ name: RecipeParser CI - Enforce Golden Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, ci-trigger-test ]  # TEMP: ci-trigger-test for workflow debug
     paths:
       - 'lib/services/recipe_parser.dart'
       - 'lib/services/normalizer.dart'
